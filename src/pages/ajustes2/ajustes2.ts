@@ -1,25 +1,34 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, ModalController } from 'ionic-angular';
 
-/**
- * Generated class for the Ajustes2Page page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import {ModalPage}  from "../index.paginas";
 
-@IonicPage()
 @Component({
   selector: 'page-ajustes2',
   templateUrl: 'ajustes2.html',
 })
 export class Ajustes2Page {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private modalCtrl:ModalController) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad Ajustes2Page');
+  mostrar_modal(){
+
+    //this.modalCtrl.create( ModalPage().present(); no permite enviar parametros
+
+    let modal =  this.modalCtrl.create( ModalPage, {nombre:"Javi", edad:27} );
+
+    modal.present();
+
+    modal.onDidDismiss ( parametros => {
+
+      if(parametros){
+        console.log("Data del modal");
+        console.log(parametros);
+      }else{
+        console.log("Se cerró modal sin parámetros")
+      }
+    })
   }
 
 }

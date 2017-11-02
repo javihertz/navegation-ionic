@@ -20,7 +20,7 @@ export class AjustesPage {
 
   mostrar_modal(){
 
-    //this.modalCtrl.create( ModalPage).present(); no permite enviar parametros
+    //this.modalCtrl.create( ModalPage().present(); no permite enviar parametros
 
     let modal =  this.modalCtrl.create( ModalPage, {nombre:"Javi", edad:27} );
 
@@ -35,7 +35,6 @@ export class AjustesPage {
         console.log("Se cerró modal sin parámetros")
       }
     })
-
   }
 
 
